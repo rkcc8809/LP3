@@ -1,0 +1,13 @@
+@use "../setting" as *;
+
+@mixin flex($justify: center) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+}
+
+@mixin font-normal {
+  font-family: $font-family;
+  font-weight: normal;
+}
+
