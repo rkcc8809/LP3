@@ -2,7 +2,7 @@
 
 html {
   font-size: 1rem;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 90px;
     scroll-behavior: smooth;
     background-color: $cWhite;
     @include mq(pc) {
@@ -15,6 +15,7 @@ html {
     
       @include mq(sp) {
         font-size: 0.8rem;
+        scroll-padding-top: 80px;
       }
 }
 
@@ -34,14 +35,99 @@ a {
 }
 
 a:hover {
-  opacity: 0.7;
+  opacity: 0.9;
+  color: $cGreen;
 }
 
 li {
   list-style: none;
 }
 
+// ローディング画面
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $cWhite;
+  z-index: 1200;
+  text-align: center;
+  color: $cGreen;
+}
 
+#loading-text {
+  position: absolute;
+  font-weight: 500;
+  letter-spacing: 15px;
+  font-size: 3rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-animation {
+  display: none;
+}
+
+body.appear .loading-animation {
+  display: block;
+  content: "";
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  background-color: $cGreen;
+  animation-name: PageAnime;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes PageAnime {
+  0% {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  50% {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+
+  50.001% {
+    transform-origin: right;
+  }
+
+  100% {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
+}
+
+#main-content {
+  opacity: 0;
+}
+
+body.appear #main-content {
+  animation-name: PageAnimeAppear;
+  animation-duration: 1s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes PageAnimeAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .__section1 {
   // margin-top: 7.5%;
@@ -94,7 +180,7 @@ li {
 
   &-wrap {
     position: relative;
-    width: 90%;
+    // width: 90%;
     @include flex(space-between);
     z-index: 100;
     height: 90px;
@@ -105,6 +191,7 @@ li {
 
     &__logo {
       flex-grow: 0;
+      padding-left: 5%;
 
       &__ttl {
 
@@ -177,14 +264,14 @@ li {
             width: 24px;
             position: absolute;
             top: 40%;
-            right: 0;
+            right: 5%;
             transform: translateY(-50%);
             border-top: 4px solid $cGray;
             cursor: pointer;
             z-index: 1000;
             @include mq(sp) {
                 width: 20px;
-                right: 2.5%;
+                right: 6%;
               }
     
             &::before,
@@ -240,9 +327,7 @@ body.nav-open header .drawer {
 
 .top {
   position: fixed;
-    top: 0;
     width: 100%;
-    z-index: 10;
   z-index: 5;
   top: 90px;
   border: none;
@@ -251,9 +336,10 @@ body.nav-open header .drawer {
     box-sizing: border-box;
     // overflow: hidden;
   &-wrap {
+    position: relative;
     width: 90%;
     padding-top: 90px;
-    height: 87.5vh;
+    height: 90vh;
     background-image: url('/img/main.jpg'); // 画像を背景として設定
       background-position: center; // 画像を中央に配置
       background-repeat: no-repeat; // 画像の繰り返し無し
@@ -265,24 +351,45 @@ body.nav-open header .drawer {
 
     @include mq(sp) {
         padding-top: 150px;
-        height: 70vh;
+        height: 90vh;
+      }
+
+      &__ttl {
+        position: absolute;
+        z-index: 40;
+        left: 0;
+        bottom: 15%;
+        @include mq(pc) {
+          bottom: 12%;
+        }
+        @include mq(sp) {
+          bottom: 17.5%;
+        }
+
+
+        & h2 {
+          color: $cWhite;
+          font-size: 1.5rem;
+          line-height: 1.6;
+          letter-spacing: 2px;
+        }
       }
   }
 }
 
 .topics {
-  margin-top: 87.5vh;
+  margin-top: 90vh;
   &.__section1 {
     padding-bottom: 0;
   }
   @include mq(sp) {
-    margin-top:70vh;
+    margin-top:90vh;
   }
   &-wrap {
     border-left: 3px solid $cGray;
     @include mq(tab) {
         width: 80%;
-        margin: 0 auto;
+        margin: 15% auto 0;
       }
       @include mq(sp) {
         width: 100%;
@@ -336,7 +443,7 @@ body.nav-open header .drawer {
 
 .vis {
   &.__section1 {
-      padding-bottom: 0;
+      padding-bottom: 10%;
     }
   &-wrap {
     @include flex(space-between);
@@ -451,18 +558,21 @@ body.nav-open header .drawer {
 
 .ser {
   &.__section1 {
-      padding-bottom: 1px;
+    padding-top: 7.5%;
+    @include mq(sp) {
+      // padding-top: 20%;
     }
+  }
   &-wrap {
     &__body {
       margin: 10% 0;
+      @include mq(sp) {
+        margin: 15% 0;
+      }
       &__block {
         position: relative;
         margin-top: 10%;
-        @include mq(tab) {
-          margin-top: 15%;
-        }
-
+        
         &.__second,
         &.__third {
           margin-top: 15%;
@@ -550,6 +660,8 @@ body.nav-open header .drawer {
               left: auto;
               right: 0;
             }
+
+            
             
      
 
@@ -569,16 +681,17 @@ body.nav-open header .drawer {
               }
             }
 
-            &__bottom {
+            // &__bottom {
          
 
-              &__wrapper {
-                  display: inline-block;
+              // &__wrapper {
+                  // display: inline-block;
 
             & > p {
               font-size: 0.8rem;
               text-align: left;
               line-height: 1.8;
+              display: inline-block;
               @include mq(pc) {
                 line-height: 1.2;
               }
@@ -586,13 +699,35 @@ body.nav-open header .drawer {
                 padding-top: 7%;
                 line-height: 1.8;
               }
+              &.__second {
+                 padding: 0 10% 0;
+                 @include mq(tab) {
+                  padding: 7% 10% 0;
+                 }
+                 @include mq(sp) {
+                  padding: 7% 0 0;
+                 }
+              }
             }
             &__btn {
               width: 80px;
               
-              margin-top: 7%;
+              // margin-top: 7%;
               margin-right: 0;
               margin-left: auto;
+
+              &.__second {
+                  padding: 0 10% 0;
+                  @include mq(tab) {
+                    padding: 5% 10% 0;
+                  }
+                  @include mq(sp) {
+                    padding: 7% 0 0;
+                  }
+                }
+              
+
+
               @include mq(pc) {
                 margin-top: 1%;
               }
@@ -604,23 +739,56 @@ body.nav-open header .drawer {
               
 
               &__a {
-                
+                position: relative;
+                  /* a要素に対して相対位置を設定 */
+                  display: block;
+                  /* 必要に応じてサイズ調整 */
+                  overflow: hidden;
+                  /* 擬似要素のはみ出しを隠す */
+                  width: 80px;
+                  &::after {
+                    content: "";
+                      position: absolute;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                      height: 100%;
+                      width: 100%;
+                      background-color: $cGray;                      
+                      /* ホバー時の背景色 */
+                      transition: transform 0.3s, opacity 0.3s;
+                      /* アニメーションの速度調整 */
+                      transform: translateY(100%);
+                      /* 初期位置は要素の下部 */
+                      opacity: 0;
+                      /* 初期透明度 */
+                      z-index: -1; // テキストが前面に来るようにする
+                  }
+                  &:hover::after {
+                    transform: translateY(0);
+                      /* ホバー時には元の位置に */
+                      opacity: 1;
+                      /* ホバー時に透明度を100%に */
+                  }
+                  &:hover {
+                    color: $cWhite;
+                  }
 
                 &__txt {
                   font-size: 0.8rem;
-                  
+                  line-height: 2;
                 }
                 &__border {
                   border-bottom: 4px solid $cGray;
-                  margin-top: 7%;
+                  // margin-top: 7%;
                   @include mq(tab) {
                     border-bottom: 2px solid $cGray;
                   }
                 }
               }
             }
-          }
-          }
+          // }
+          // }
           }
         }
       }
@@ -628,16 +796,51 @@ body.nav-open header .drawer {
   }
 }
 
+@keyframes half-rotate {
+  from {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+.rotate-on-scroll {
+  animation: half-rotate 0.7s ease-out forwards;
+}
+
+@keyframes half-rotate__slow {
+  from {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+.rotate-on-scroll__slow {
+  animation: half-rotate__slow 0.7s ease-out forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
 .about {
   background-color: $cWhite;
   &.__section1 {
-    padding: 0;
+    padding: 7.5% 0;
   }
   &-wrap {
     &__ttl {
       color: $cGreen;
     }
     &__body {
+      margin-top: 10%;
       &__list {
         width: 62%;
         margin: 5% auto 0;
@@ -689,8 +892,11 @@ body.nav-open header .drawer {
 .faq {
   background-color: $cWhite;
   &.__section1 {
-    padding-top: 12.5%;
+    padding-top: 7.5%;
     padding-bottom: 1.5%;
+    @include mq(sp) {
+      // padding-top: 20%;
+    }
   }
   &-wrap {
     width: 62%;
@@ -703,13 +909,25 @@ body.nav-open header .drawer {
     }
     &__body {
       margin: 12% 0;
+      @include mq(sp) {
+        margin: 15% 0;
+      }
       &__list {
-        &__item {
+        &__item {          
           position: relative;
           margin: 1.5% 0;
           border: 2px solid $cGray-Light-border;
           padding: 5% 2.5%;
           list-style: none;
+          transition: all 0.3s ease;
+
+          &.expand-up {             
+              transform-origin: bottom;            
+          }
+
+         &.expand-down {
+             transform-origin: top;           
+         }
 
           &__tog {
             display: none;
@@ -717,8 +935,9 @@ body.nav-open header .drawer {
           &__tog:checked
           + &__ttl
           + &__con {
-            max-height: 500px;
-            transition: all 0.7s;
+            max-height: 60px;
+            // transform: scaleY(1); // 開く
+            // transition: all 0.7s;
           }
 
           // &__tog:checked
@@ -743,7 +962,7 @@ body.nav-open header .drawer {
           &__ttl,
           &__con {
             transform: translate(0);
-            transition: all 0.3s;
+            // transition: all 0.3s;
           }
 
           &__ttl {
@@ -774,6 +993,9 @@ body.nav-open header .drawer {
           }
 
           &__con {
+            transition: all 0.5s ease;
+            // transition: max-height 0.5s ease-in-out;
+            // transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
             max-height: 0;
             overflow: hidden;
             padding-left: 3%;
@@ -783,22 +1005,25 @@ body.nav-open header .drawer {
             line-height: 1.8;
             transform: scaleY(0);
             transform-origin: top;
+            &.expand-up {
+                transform-origin: bottom;
+              }
+            
+              &.expand-down {
+                transform-origin: top;
+              }
 
             &__content {
               padding: 20px 7.5%; // 上下左右のパディングを設定
                 margin-top: 5px; // labelとの間にマージンを設定
-                
-                // opacity: 1; // 初期状態では不透明度を0に設定
-                // transition: opacity 0.3s ease-in-out; // 不透明度の変化もスムーズに
-            
-
+              
             & p {
               font-weight: 400;
             }
           }
           }
                 &__tog:checked+&__ttl+&__con {
-                  max-height: 500px; // 必要に応じて最大高さを調整
+                  max-height: 60px; // 必要に応じて最大高さを調整
                   padding: 4% 3% 4% 3%;
                   margin-top: 4%;
                   margin-left: 2.5%;
@@ -814,6 +1039,33 @@ body.nav-open header .drawer {
   }
 }
 
+.fadeUp {
+  animation: fadeUpAnime 0.5s forwards;
+  /* fadeUpAnimeを0.8秒で一回実行 */
+  // opacity: 0;
+}
+
+.fadeUpTrigger {
+  opacity: 0;
+  /* 初めは見えないようにしておく */
+}
+
+@keyframes fadeUpAnime {
+  from {
+    opacity: 0;
+    /* 初めは見えないようにしておく */
+    transform: translateY(100px);
+    /* 100px下に動かしておく */
+  }
+
+  to {
+    opacity: 1;
+    /* 可視化する */
+    transform: translateY(0);
+    /* 元の位置に戻す */
+  }
+}
+
 
 .con {
   &-wrap {
@@ -823,7 +1075,7 @@ body.nav-open header .drawer {
     &__body {
       &__form {
         width: 50%;
-        margin: 7.5% auto 0;
+        margin: 10% auto 0;
         @include mq(pc) {
           width: 60%;
         }
@@ -832,7 +1084,7 @@ body.nav-open header .drawer {
         }
         @include mq(sp) {
           width: 100%;
-          margin: 10% 0;
+          margin: 15% 0;
         }
 
         &__block {
@@ -868,6 +1120,7 @@ body.nav-open header .drawer {
           width: 10rem;
           margin: 0 auto;
           margin-top: 2.5%;
+
           & button {
             width: 100%;
             cursor: pointer;
@@ -876,7 +1129,46 @@ body.nav-open header .drawer {
             background-color: $cWhite;
             border: 3px solid $cGray;
             padding: 4% 0;
+            position: relative;
+              /* a要素に対して相対位置を設定 */
+              z-index: 1;
+              display: inline-block;
+              /* 必要に応じてサイズ調整 */
+              overflow: hidden;
+              /* 擬似要素のはみ出しを隠す */
+              transition: color 0.3s;
+              &::after {
+                  content: "";
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  top: 0;
+                  bottom: 0;
+                  height: 100%;
+                  width: 100%;
+                  background-color: $cGray;
+                  /* ホバー時の背景色 */
+                  transition: transform 0.3s, opacity 0.3s;
+                  /* アニメーションの速度調整 */
+                  transform: translateY(100%);
+                  /* 初期位置は要素の下部 */
+                  opacity: 0;
+                  /* 初期透明度 */
+                  z-index: -1; // テキストが前面に来るようにする
+                }
+              
+                &:hover::after {
+                  transform: translateY(0);
+                  /* ホバー時には元の位置に */
+                  opacity: 1;
+                  /* ホバー時に透明度を100%に */
+                }
+              
+                &:hover {
+                  color: $cWhite;
+                }
           }
+                    
         }
       }
     }
@@ -891,9 +1183,9 @@ body.nav-open header .drawer {
       margin: 0;
     }
     &__body {
-      padding: 5% 0;
+      padding: 10% 0;
       @include mq(tab) {
-        padding: 10% 0;
+        padding: 15% 0;
       }
       @include mq(sp) {
         padding: 25% 0;
@@ -905,7 +1197,10 @@ body.nav-open header .drawer {
       &__copyright {
         font-size: 0.9rem;
         color: $cGray-Light;
-        margin-top: 4%;
+        margin-top: 5%;
+        @include mq(tab) {
+          margin-top: 10%;
+        }
         @include mq(sp) {
           margin-top: 15%;
         }

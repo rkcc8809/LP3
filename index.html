@@ -35,8 +35,13 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
+    <div id="loading">
+      <h2 id="loading-text">ABC商事</h2>
+    </div>
+    <div class="loading-animation"></div>
+    <div id="main-content">
     <header class="header" id="header">
-      <div class="header-wrap  __inner">
+      <div class="header-wrap">
         <div class="header-wrap__logo">
           <a href="/" class="header-wrap__logo__ttl">
             <h1>ABC商事</h1>
@@ -74,7 +79,15 @@
     </header>
     <main>
       <section class="top" id="top">
-        <div class="top-wrap __inner"></div>
+        <div class="top-wrap __inner">
+          <div class="top-wrap__ttl">
+            <h2 class="t-ttl">
+              IMPOSSIBLE<br>
+              IS<br>
+              NOTHING
+            </h2>
+          </div>
+        </div>
       </section>
       <section class="topics __section1 __inner" id="topics">
         <div class="topics-wrap">
@@ -125,32 +138,30 @@
                     CONSULTING
                     <span>コンサルティング事業</span>
                   </h3>
-                  <div class="ser-wrap__body__block__img__con__bottom">
-                    <div
-                      class="ser-wrap__body__block__img__con__bottom__wrapper"
-                    >
+                  <!-- <div class="ser-wrap__body__block__img__con__bottom"> -->
+                    <!-- <div class="ser-wrap__body__block__img__con__bottom__wrapper"> -->
                       <p>
                         経営・システム・デジタルマーケティングの目線でのコンサルティングを行います。
                       </p>
                       <div
-                        class="ser-wrap__body__block__img__con__bottom__wrapper__btn"
+                        class="ser-wrap__body__block__img__con__btn"
                       >
                         <a
                           href="#"
-                          class="ser-wrap__body__block__img__con___bottom__wrapper__btn__a"
+                          class="ser-wrap__body__block__img__con__btn__a"
                         >
                           <p
-                            class="ser-wrap__body__block__img__con__bottom__wrapper__btn__a__txt"
+                            class="ser-wrap__body__block__img__con__btn__a__txt"
                           >
                             MORE
                           </p>
                           <div
-                            class="ser-wrap__body__block__img__con__bottom__wrapper__btn__a__border"
+                            class="ser-wrap__body__block__img__con__btn__a__border"
                           ></div>
                         </a>
                       </div>
-                    </div>
-                  </div>
+                    <!-- </div> -->
+                  <!-- </div> -->
                 </div>
               </div>
             </div>
@@ -159,37 +170,37 @@
                 <div class="ser-wrap__body__block__img__pic __rev">
                   <img src="img/pic_03.jpg" alt="service画像1" />
                 </div>
-                <div class="ser-wrap__body__block__img__con __rev2">
+                <div class="ser-wrap__body__block__img__con __rev2 __second">
                   <h3>
                     DEVELOPMENT
                     <span>受託開発事業</span>
                   </h3>
-                  <div class="ser-wrap__body__block__img__con__bottom">
-                    <div
+                  <!-- <div class="ser-wrap__body__block__img__con__bottom"> -->
+                    <!-- <div
                       class="ser-wrap__body__block__img__con__bottom__wrapper"
-                    >
-                      <p>
+                    > -->
+                      <p class="__second">
                         プロジェクト/プロダクトマネージメントの支援を致します。
                       </p>
                       <div
-                        class="ser-wrap__body__block__img__con__bottom__wrapper__btn"
+                        class="ser-wrap__body__block__img__con__btn __second"
                       >
                         <a
                           href="#"
-                          class="ser-wrap__body__block__img__con__bottom__wrapper__btn__a"
+                          class="ser-wrap__body__block__img__con__btn__a"
                         >
                           <p
-                            class="ser-wrap__body__block__img__con__bottom__wrapper__btn__a__txt"
+                            class="ser-wrap__body__block__img__con__btn__a__txt"
                           >
                             MORE
                           </p>
                           <div
-                            class="ser-wrap__body__block__img__con__bottom__wrapper__btn__a__border"
+                            class="ser-wrap__body__block__img__con__btn__a__border"
                           ></div>
                         </a>
                       </div>
-                    </div>
-                  </div>
+                    <!-- </div> -->
+                  <!-- </div> -->
                 </div>
               </div>
             </div>
@@ -203,32 +214,32 @@
                     EDUCATION
                     <span>教育事業</span>
                   </h3>
-                  <div class="ser-wrap__body__block__img__con__bottom">
-                    <div
+                  <!-- <div class="ser-wrap__body__block__img__con__bottom"> -->
+                    <!-- <div
                       class="ser-wrap__body__block__img__con__bottom__wrapper"
-                    >
+                    > -->
                       <p>
                         新人エンジニアやデザイナーの教育、新人教育・プログラミング研修を徹底して行います。
                       </p>
                       <div
-                        class="ser-wrap__body__block__img__con__bottom__wrapper__btn"
+                        class="ser-wrap__body__block__img__con__btn"
                       >
                         <a
                           href="#"
-                          class="ser-wrap__body__block__img__con__bottom__wrapper__btn__a"
+                          class="ser-wrap__body__block__img__con__btn__a"
                         >
                           <p
-                            class="ser-wrap__body__block__img__con__bottom__wrapper__btn__a__txt"
+                            class="ser-wrap__body__block__img__con__btn__a__txt"
                           >
                             MORE
                           </p>
                           <div
-                            class="ser-wrap__body__block__img__con__bottom__wrapper__btn__a__border"
+                            class="ser-wrap__body__block__img__con__btn__a__border"
                           ></div>
                         </a>
                       </div>
-                    </div>
-                  </div>
+                    <!-- </div> -->
+                  <!-- </div> -->
                 </div>
               </div>
             </div>
@@ -241,7 +252,7 @@
             <h2 class="s-ttl c-ttl">ABOUT</h2>
           </div>
           <div class="about-wrap__body">
-            <ul class="about-wrap__body__list">
+            <ul class="about-wrap__body__list fadeUpTrigger">
               <li class="about-wrap__body__list__item">
                 <p class="about-wrap__body__list__item__left">会社名</p>
                 <p class="about-wrap__body__list__item__right">
@@ -298,7 +309,7 @@
           </div>
           <div class="faq-wrap__body">
             <ul class="faq-wrap__body__list">
-              <li class="faq-wrap__body__list__item">
+              <li class="faq-wrap__body__list__item fadeUpTrigger expand-down">
                 <input
                   type="checkbox"
                   id="toggle1"
@@ -313,7 +324,7 @@
                   </p>
                 </div>
               </li>
-              <li class="faq-wrap__body__list__item">
+              <li class="faq-wrap__body__list__item fadeUpTrigger expand-up">
                 <input
                   type="checkbox"
                   id="toggle2"
@@ -326,7 +337,7 @@
                   <p>可能です。お気軽にご相談ください。</p>
                 </div>
               </li>
-              <li class="faq-wrap__body__list__item">
+              <li class="faq-wrap__body__list__item fadeUpTrigger expand-up">
                 <input
                   type="checkbox"
                   id="toggle3"
@@ -341,7 +352,7 @@
                   </p>
                 </div>
               </li>
-              <li class="faq-wrap__body__list__item">
+              <li class="faq-wrap__body__list__item fadeUpTrigger expand-up">
                 <input
                   type="checkbox"
                   id="toggle4"
@@ -424,6 +435,7 @@
         </div>
       </div>
     </footer>
+    </div>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>

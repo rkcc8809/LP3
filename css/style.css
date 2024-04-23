@@ -167,7 +167,7 @@ select {
 
 html {
   font-size: 1rem;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 90px;
   scroll-behavior: smooth;
   background-color: #fff;
 }
@@ -184,6 +184,7 @@ html {
 @media screen and (max-width: 480px) {
   html {
     font-size: 0.8rem;
+    scroll-padding-top: 80px;
   }
 }
 
@@ -204,13 +205,94 @@ a {
 }
 
 a:hover {
-  opacity: 0.7;
+  opacity: 0.9;
+  color: #119da4;
 }
 
 li {
   list-style: none;
 }
 
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1200;
+  text-align: center;
+  color: #119da4;
+}
+
+#loading-text {
+  position: absolute;
+  font-weight: 500;
+  letter-spacing: 15px;
+  font-size: 3rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-animation {
+  display: none;
+}
+
+body.appear .loading-animation {
+  display: block;
+  content: "";
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  background-color: #119da4;
+  animation-name: PageAnime;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes PageAnime {
+  0% {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  50% {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+  50.001% {
+    transform-origin: right;
+  }
+  100% {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
+}
+#main-content {
+  opacity: 0;
+}
+
+body.appear #main-content {
+  animation-name: PageAnimeAppear;
+  animation-duration: 1s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes PageAnimeAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .__section1 {
   padding: 7.5% 0;
 }
@@ -262,7 +344,6 @@ li {
 }
 .header-wrap {
   position: relative;
-  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -277,6 +358,7 @@ li {
 }
 .header-wrap__logo {
   flex-grow: 0;
+  padding-left: 5%;
 }
 .header-wrap__logo__ttl h1 {
   font-size: 1.5rem;
@@ -354,7 +436,7 @@ li {
     width: 24px;
     position: absolute;
     top: 40%;
-    right: 0;
+    right: 5%;
     transform: translateY(-50%);
     border-top: 4px solid #333333;
     cursor: pointer;
@@ -364,7 +446,7 @@ li {
 @media screen and (max-width: 768px) and (max-width: 480px) {
   .header-wrap .drawer {
     width: 20px;
-    right: 2.5%;
+    right: 6%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -421,9 +503,7 @@ li {
 }
 .top {
   position: fixed;
-  top: 0;
   width: 100%;
-  z-index: 10;
   z-index: 5;
   top: 90px;
   border: none;
@@ -432,9 +512,10 @@ li {
   box-sizing: border-box;
 }
 .top-wrap {
+  position: relative;
   width: 90%;
   padding-top: 90px;
-  height: 87.5vh;
+  height: 90vh;
   background-image: url("/img/main.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -447,19 +528,41 @@ li {
 @media screen and (max-width: 480px) {
   .top-wrap {
     padding-top: 150px;
-    height: 70vh;
+    height: 90vh;
   }
+}
+.top-wrap__ttl {
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  bottom: 15%;
+}
+@media screen and (max-width: 1024px) {
+  .top-wrap__ttl {
+    bottom: 12%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .top-wrap__ttl {
+    bottom: 17.5%;
+  }
+}
+.top-wrap__ttl h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  letter-spacing: 2px;
 }
 
 .topics {
-  margin-top: 87.5vh;
+  margin-top: 90vh;
 }
 .topics.__section1 {
   padding-bottom: 0;
 }
 @media screen and (max-width: 480px) {
   .topics {
-    margin-top: 70vh;
+    margin-top: 90vh;
   }
 }
 .topics-wrap {
@@ -468,7 +571,7 @@ li {
 @media screen and (max-width: 768px) {
   .topics-wrap {
     width: 80%;
-    margin: 0 auto;
+    margin: 15% auto 0;
   }
 }
 @media screen and (max-width: 480px) {
@@ -524,7 +627,7 @@ li {
 }
 
 .vis.__section1 {
-  padding-bottom: 0;
+  padding-bottom: 10%;
 }
 .vis-wrap {
   display: flex;
@@ -665,19 +768,19 @@ li {
 }
 
 .ser.__section1 {
-  padding-bottom: 1px;
+  padding-top: 7.5%;
 }
 .ser-wrap__body {
   margin: 10% 0;
 }
+@media screen and (max-width: 480px) {
+  .ser-wrap__body {
+    margin: 15% 0;
+  }
+}
 .ser-wrap__body__block {
   position: relative;
   margin-top: 10%;
-}
-@media screen and (max-width: 768px) {
-  .ser-wrap__body__block {
-    margin-top: 15%;
-  }
 }
 .ser-wrap__body__block.__second, .ser-wrap__body__block.__third {
   margin-top: 15%;
@@ -787,62 +890,154 @@ li {
     margin-top: 3.5%;
   }
 }
-.ser-wrap__body__block__img__con__bottom__wrapper {
-  display: inline-block;
-}
-.ser-wrap__body__block__img__con__bottom__wrapper > p {
+.ser-wrap__body__block__img__con > p {
   font-size: 0.8rem;
   text-align: left;
   line-height: 1.8;
+  display: inline-block;
 }
 @media screen and (max-width: 1024px) {
-  .ser-wrap__body__block__img__con__bottom__wrapper > p {
+  .ser-wrap__body__block__img__con > p {
     line-height: 1.2;
   }
 }
 @media screen and (max-width: 768px) {
-  .ser-wrap__body__block__img__con__bottom__wrapper > p {
+  .ser-wrap__body__block__img__con > p {
     padding-top: 7%;
     line-height: 1.8;
   }
 }
-.ser-wrap__body__block__img__con__bottom__wrapper__btn {
+.ser-wrap__body__block__img__con > p.__second {
+  padding: 0 10% 0;
+}
+@media screen and (max-width: 768px) {
+  .ser-wrap__body__block__img__con > p.__second {
+    padding: 7% 10% 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .ser-wrap__body__block__img__con > p.__second {
+    padding: 7% 0 0;
+  }
+}
+.ser-wrap__body__block__img__con__btn {
   width: 80px;
-  margin-top: 7%;
   margin-right: 0;
   margin-left: auto;
 }
+.ser-wrap__body__block__img__con__btn.__second {
+  padding: 0 10% 0;
+}
+@media screen and (max-width: 768px) {
+  .ser-wrap__body__block__img__con__btn.__second {
+    padding: 5% 10% 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .ser-wrap__body__block__img__con__btn.__second {
+    padding: 7% 0 0;
+  }
+}
 @media screen and (max-width: 1024px) {
-  .ser-wrap__body__block__img__con__bottom__wrapper__btn {
+  .ser-wrap__body__block__img__con__btn {
     margin-top: 1%;
   }
 }
 @media screen and (max-width: 768px) {
-  .ser-wrap__body__block__img__con__bottom__wrapper__btn {
+  .ser-wrap__body__block__img__con__btn {
     padding-top: 5%;
   }
 }
-.ser-wrap__body__block__img__con__bottom__wrapper__btn__a__txt {
-  font-size: 0.8rem;
+.ser-wrap__body__block__img__con__btn__a {
+  position: relative;
+  /* a要素に対して相対位置を設定 */
+  display: block;
+  /* 必要に応じてサイズ調整 */
+  overflow: hidden;
+  /* 擬似要素のはみ出しを隠す */
+  width: 80px;
 }
-.ser-wrap__body__block__img__con__bottom__wrapper__btn__a__border {
+.ser-wrap__body__block__img__con__btn__a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #333333;
+  /* ホバー時の背景色 */
+  transition: transform 0.3s, opacity 0.3s;
+  /* アニメーションの速度調整 */
+  transform: translateY(100%);
+  /* 初期位置は要素の下部 */
+  opacity: 0;
+  /* 初期透明度 */
+  z-index: -1;
+}
+.ser-wrap__body__block__img__con__btn__a:hover::after {
+  transform: translateY(0);
+  /* ホバー時には元の位置に */
+  opacity: 1;
+  /* ホバー時に透明度を100%に */
+}
+.ser-wrap__body__block__img__con__btn__a:hover {
+  color: #fff;
+}
+.ser-wrap__body__block__img__con__btn__a__txt {
+  font-size: 0.8rem;
+  line-height: 2;
+}
+.ser-wrap__body__block__img__con__btn__a__border {
   border-bottom: 4px solid #333333;
-  margin-top: 7%;
 }
 @media screen and (max-width: 768px) {
-  .ser-wrap__body__block__img__con__bottom__wrapper__btn__a__border {
+  .ser-wrap__body__block__img__con__btn__a__border {
     border-bottom: 2px solid #333333;
   }
+}
+
+@keyframes half-rotate {
+  from {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+.rotate-on-scroll {
+  animation: half-rotate 0.7s ease-out forwards;
+}
+
+@keyframes half-rotate__slow {
+  from {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+.rotate-on-scroll__slow {
+  animation: half-rotate__slow 0.7s ease-out forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
 }
 
 .about {
   background-color: #fff;
 }
 .about.__section1 {
-  padding: 0;
+  padding: 7.5% 0;
 }
 .about-wrap__ttl {
   color: #119da4;
+}
+.about-wrap__body {
+  margin-top: 10%;
 }
 .about-wrap__body__list {
   width: 62%;
@@ -897,7 +1092,7 @@ li {
   background-color: #fff;
 }
 .faq.__section1 {
-  padding-top: 12.5%;
+  padding-top: 7.5%;
   padding-bottom: 1.5%;
 }
 .faq-wrap {
@@ -917,19 +1112,30 @@ li {
 .faq-wrap__body {
   margin: 12% 0;
 }
+@media screen and (max-width: 480px) {
+  .faq-wrap__body {
+    margin: 15% 0;
+  }
+}
 .faq-wrap__body__list__item {
   position: relative;
   margin: 1.5% 0;
   border: 2px solid #aaa;
   padding: 5% 2.5%;
   list-style: none;
+  transition: all 0.3s ease;
+}
+.faq-wrap__body__list__item.expand-up {
+  transform-origin: bottom;
+}
+.faq-wrap__body__list__item.expand-down {
+  transform-origin: top;
 }
 .faq-wrap__body__list__item__tog {
   display: none;
 }
 .faq-wrap__body__list__item__tog:checked + .faq-wrap__body__list__item__ttl + .faq-wrap__body__list__item__con {
-  max-height: 500px;
-  transition: all 0.7s;
+  max-height: 60px;
 }
 .faq-wrap__body__list__item__tog:checked + .faq-wrap__body__list__item__ttl::before {
   transform: translateY(-50%) translateX(-50%) rotate(135deg);
@@ -939,7 +1145,6 @@ li {
 }
 .faq-wrap__body__list__item__ttl, .faq-wrap__body__list__item__con {
   transform: translate(0);
-  transition: all 0.3s;
 }
 .faq-wrap__body__list__item__ttl {
   display: block;
@@ -970,6 +1175,7 @@ li {
   transform: translateY(-50%) translateX(-50%) rotate(90deg);
 }
 .faq-wrap__body__list__item__con {
+  transition: all 0.5s ease;
   max-height: 0;
   overflow: hidden;
   padding-left: 3%;
@@ -980,6 +1186,12 @@ li {
   transform: scaleY(0);
   transform-origin: top;
 }
+.faq-wrap__body__list__item__con.expand-up {
+  transform-origin: bottom;
+}
+.faq-wrap__body__list__item__con.expand-down {
+  transform-origin: top;
+}
 .faq-wrap__body__list__item__con__content {
   padding: 20px 7.5%;
   margin-top: 5px;
@@ -988,7 +1200,7 @@ li {
   font-weight: 400;
 }
 .faq-wrap__body__list__item__tog:checked + .faq-wrap__body__list__item__ttl + .faq-wrap__body__list__item__con {
-  max-height: 500px;
+  max-height: 60px;
   padding: 4% 3% 4% 3%;
   margin-top: 4%;
   margin-left: 2.5%;
@@ -997,12 +1209,36 @@ li {
   transform: scaleY(1);
 }
 
+.fadeUp {
+  animation: fadeUpAnime 0.5s forwards;
+  /* fadeUpAnimeを0.8秒で一回実行 */
+}
+
+.fadeUpTrigger {
+  opacity: 0;
+  /* 初めは見えないようにしておく */
+}
+
+@keyframes fadeUpAnime {
+  from {
+    opacity: 0;
+    /* 初めは見えないようにしておく */
+    transform: translateY(100px);
+    /* 100px下に動かしておく */
+  }
+  to {
+    opacity: 1;
+    /* 可視化する */
+    transform: translateY(0);
+    /* 元の位置に戻す */
+  }
+}
 .con-wrap__ttl {
   color: #119da4;
 }
 .con-wrap__body__form {
   width: 50%;
-  margin: 7.5% auto 0;
+  margin: 10% auto 0;
 }
 @media screen and (max-width: 1024px) {
   .con-wrap__body__form {
@@ -1017,7 +1253,7 @@ li {
 @media screen and (max-width: 480px) {
   .con-wrap__body__form {
     width: 100%;
-    margin: 10% 0;
+    margin: 15% 0;
   }
 }
 .con-wrap__body__form__block {
@@ -1068,6 +1304,42 @@ li {
   background-color: #fff;
   border: 3px solid #333333;
   padding: 4% 0;
+  position: relative;
+  /* a要素に対して相対位置を設定 */
+  z-index: 1;
+  display: inline-block;
+  /* 必要に応じてサイズ調整 */
+  overflow: hidden;
+  /* 擬似要素のはみ出しを隠す */
+  transition: color 0.3s;
+}
+.con-wrap__body__form__btn button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #333333;
+  /* ホバー時の背景色 */
+  transition: transform 0.3s, opacity 0.3s;
+  /* アニメーションの速度調整 */
+  transform: translateY(100%);
+  /* 初期位置は要素の下部 */
+  opacity: 0;
+  /* 初期透明度 */
+  z-index: -1;
+}
+.con-wrap__body__form__btn button:hover::after {
+  transform: translateY(0);
+  /* ホバー時には元の位置に */
+  opacity: 1;
+  /* ホバー時に透明度を100%に */
+}
+.con-wrap__body__form__btn button:hover {
+  color: #fff;
 }
 
 .footer-wrap {
@@ -1078,11 +1350,11 @@ li {
   margin: 0;
 }
 .footer-wrap__body {
-  padding: 5% 0;
+  padding: 10% 0;
 }
 @media screen and (max-width: 768px) {
   .footer-wrap__body {
-    padding: 10% 0;
+    padding: 15% 0;
   }
 }
 @media screen and (max-width: 480px) {
@@ -1097,7 +1369,12 @@ li {
 .footer-wrap__body__copyright {
   font-size: 0.9rem;
   color: #808080;
-  margin-top: 4%;
+  margin-top: 5%;
+}
+@media screen and (max-width: 768px) {
+  .footer-wrap__body__copyright {
+    margin-top: 10%;
+  }
 }
 @media screen and (max-width: 480px) {
   .footer-wrap__body__copyright {
