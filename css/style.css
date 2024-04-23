@@ -516,7 +516,7 @@ body.appear #main-content {
   width: 90%;
   padding-top: 90px;
   height: 90vh;
-  background-image: url("/img/main.jpg");
+  background-image: url("../img/main.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
