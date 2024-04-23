@@ -389,7 +389,8 @@ body.nav-open header .drawer {
     border-left: 3px solid $cGray;
     @include mq(tab) {
         width: 80%;
-        margin: 15% auto 0;
+        // margin: 15% auto 0; 余白の感覚を狭める
+        margin: 7.5% auto 0;  //リロードしてデバイスの中に表示されないように
       }
       @include mq(sp) {
         width: 100%;
@@ -565,9 +566,9 @@ body.nav-open header .drawer {
   }
   &-wrap {
     &__body {
-      margin: 10% 0;
+      margin: 10% 0 0;
       @include mq(sp) {
-        margin: 15% 0;
+        margin: 15% 0 0;
       }
       &__block {
         position: relative;
@@ -692,9 +693,9 @@ body.nav-open header .drawer {
               text-align: left;
               line-height: 1.8;
               display: inline-block;
-              @include mq(pc) {
-                line-height: 1.2;
-              }
+              // @include mq(pc) {
+              //   line-height: 1.2;  //ipad proで行間が狭いので削除
+              // }
               @include mq(tab) {
                 padding-top: 7%;
                 line-height: 1.8;

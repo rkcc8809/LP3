@@ -571,7 +571,7 @@ body.appear #main-content {
 @media screen and (max-width: 768px) {
   .topics-wrap {
     width: 80%;
-    margin: 15% auto 0;
+    margin: 7.5% auto 0;
   }
 }
 @media screen and (max-width: 480px) {
@@ -771,11 +771,11 @@ body.appear #main-content {
   padding-top: 7.5%;
 }
 .ser-wrap__body {
-  margin: 10% 0;
+  margin: 10% 0 0;
 }
 @media screen and (max-width: 480px) {
   .ser-wrap__body {
-    margin: 15% 0;
+    margin: 15% 0 0;
   }
 }
 .ser-wrap__body__block {
@@ -895,11 +895,6 @@ body.appear #main-content {
   text-align: left;
   line-height: 1.8;
   display: inline-block;
-}
-@media screen and (max-width: 1024px) {
-  .ser-wrap__body__block__img__con > p {
-    line-height: 1.2;
-  }
 }
 @media screen and (max-width: 768px) {
   .ser-wrap__body__block__img__con > p {
